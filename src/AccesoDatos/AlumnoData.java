@@ -25,13 +25,13 @@ public class AlumnoData {
     }
     
     public void guardarAlumno(Alumno alumno){
-        String sql = "INSERT INTO alumno( dni, apellido, nombre, fechaNacimiento, estado) VALUES (?,?,?)";
+        String sql = "INSERT INTO alumno( dni, apellido, nombre, fechaNacimiento, estado) VALUES (?,?,?,?,?)";
         try{
             PreparedStatement ps = conexion.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, alumno.getDni());
             ps.setString(2, alumno.getApellido());
             ps.setString(3, alumno.getNombre());
-            ps.setDate(4, alumno.getFechaNacimiento());
+            ps.setDate(4, java.sql.Date.valueOf(alumno.getFechaNacimiento()));
             ps.setBoolean(5, alumno.isEstado());
             ResultSet rs = ps.getGeneratedKeys();
             if(rs.next()){
