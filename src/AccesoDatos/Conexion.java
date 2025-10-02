@@ -27,21 +27,21 @@ public class Conexion {
                 Class.forName("org.mariadb.jdbc.Driver");
                 conexion = DriverManager.getConnection(url+db, usuario, pass);
             //Actualizar un alumno
-            String sql = "UPDATE alumno SET nombre = 'Rodrigo' WHERE dni = ???";
-            PreparedStatement ps = conexion.prepareStatement(sql);
+            String sql1 = "UPDATE alumno SET nombre = 'Rodrigo' WHERE dni = ???";
+            PreparedStatement ps = conexion.prepareStatement(sql1);
             int registros = ps.executeUpdate();
             System.out.println(registros);
 
             //Eliminar un alumno
-            String sql = "DELETE FROM alumno WHERE dni = ???";
-            PreparedStatement ps = conexion.prepareStatement(sql);
+            String sql2 = "DELETE FROM alumno WHERE dni = ???";
+            PreparedStatement ps = conexion.prepareStatement(sql2);
             int registros = ps.executeUpdate();
             System.out.println(registros);
 
             //Obtener todos los alumnos
-            String sql = "SELECT * FROM alumno";
+            String sql3 = "SELECT * FROM alumno";
             //WHERE apellido like ('e%')";
-            PreparedStatement ps = conexion.prepareStatement(sql);
+            PreparedStatement ps = conexion.prepareStatement(sql3);
             ResultSet resultado = ps.executeQuery();
             while(resultado.next()){
                 System.out.println("ID: " +resultado.getInt("idAlumno"));
