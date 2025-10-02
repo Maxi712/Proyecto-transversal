@@ -11,6 +11,8 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import org.mariadb.jdbc.Statement;
 
@@ -78,5 +80,26 @@ public class AlumnoData {
         }
     }
     
-    
+    public ArrayList<Alumno> listarAlumno(){
+        ArrayList <Alumno> listaA = new ArrayList();
+        String sql = "SELECT * FROM alumno WHERE estado=1";
+        try{
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+              int idAlumno = rs.getInt("idAlumno");
+              int dni = rs.getInt("dni");
+              String apellido = rs.getString("apellido");
+              String nombre = rs.getString("nombre");
+              LocalDate fechaNacimiento = rs.getDate("fechaNacimiento").toLocalDate();
+              boolean estado = rs.getBoolean("estado");
+              Alumno a = new Alumno(idAlumno, dni, apellido, nombre, fechaNacimiento, estado);
+              listaA.add(a);
+            }
+            ps.close();
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno ..."+ex.getMessage());
+        }
+        return listaA;
+    }
 }
