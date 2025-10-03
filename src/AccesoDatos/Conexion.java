@@ -15,8 +15,8 @@ import javax.swing.JOptionPane;
  * @author Valentin Barros
  */
 public class Conexion {
-    private static final String url = "jdbc:maria://localHost/";
-    private static final String db = "sistema de gestion";
+    private static final String url = "jdbc:mariadb://localHost/";
+    private static final String db = "sistemadegestionulp";
     private static final String usuario = "root";
     private static final String pass = "";
     private static  Connection conexion;

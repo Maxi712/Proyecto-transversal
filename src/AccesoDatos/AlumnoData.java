@@ -36,10 +36,11 @@ public class AlumnoData {
             ps.setString(3, alumno.getNombre());
             ps.setDate(4, java.sql.Date.valueOf(alumno.getFechaNacimiento()));
             ps.setBoolean(5, alumno.isEstado());
+            ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if(rs.next()){
                 alumno.setIdAlumno(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "Comida guardada exitosamente ...");
+                JOptionPane.showMessageDialog(null, "Alumno guardado exitosamente ...");
             }
             ps.close();
         }catch(SQLException ex){
@@ -73,12 +74,14 @@ public class AlumnoData {
             ps.setInt(1, idAlumno);
             int exito = ps.executeUpdate();
             if(exito == 1){
-                JOptionPane.showMessageDialog(null, "Alumno modificado ...");
+                JOptionPane.showMessageDialog(null, "Alumno eliminado ...");
             }
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno ..."+ex.getMessage());
         }
     }
+    
+    
     
     public ArrayList<Alumno> listarAlumno(){
         ArrayList <Alumno> listaA = new ArrayList();
