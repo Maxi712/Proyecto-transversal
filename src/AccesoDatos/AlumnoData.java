@@ -81,7 +81,20 @@ public class AlumnoData {
         }
     }
     
-    
+    public void altaAlumno(int idAlumno){
+        String sql = "UPDATE alumno SET estado = 1 WHERE idAlumno =?";
+        PreparedStatement ps;
+        try{
+           ps = conexion.prepareStatement(sql);
+           ps.setInt(1, idAlumno);
+           int exito  = ps.executeUpdate();
+           if(exito==1){
+              JOptionPane.showMessageDialog(null, "Alumno dado de alta ..."); 
+           }
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno ..."+ex.getMessage());
+        }
+    }
     
     public ArrayList<Alumno> listarAlumno(){
         ArrayList <Alumno> listaA = new ArrayList();
@@ -104,5 +117,47 @@ public class AlumnoData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno ..."+ex.getMessage());
         }
         return listaA;
+    }
+    
+    public Alumno buscarPorId(int idAlumno){
+        String sql = "SELECT * FROM alumno WHERE idAlumno =?";
+        Alumno a = new Alumno();
+        try{
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ps.setInt(1, idAlumno);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                a.setDni(rs.getInt("idAlumno"));
+                a.setApellido(rs.getString("apellido"));
+                a.setNombre(rs.getString("nombre"));
+                a.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
+                a.setEstado(rs.getBoolean("estado"));
+                
+            }
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno ..."+ex.getMessage());
+        }
+        return a;
+    }
+    
+    public Alumno buscarPorDocumento(int documento){
+        String sql = "SELECT * FROM alumno WHERE dni =?";
+        Alumno a = new Alumno();
+        try{
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ps.setInt(1, documento);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                a.setDni(rs.getInt("idAlumno"));
+                a.setApellido(rs.getString("apellido"));
+                a.setNombre(rs.getString("nombre"));
+                a.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
+                a.setEstado(rs.getBoolean("estado"));
+                
+            }
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno ..."+ex.getMessage());
+        }
+        return a;
     }
 }
