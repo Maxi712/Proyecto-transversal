@@ -19,7 +19,7 @@ import org.mariadb.jdbc.Statement;
 /**
  *
  * @author Valentin Barros
- * hola 
+ * 
  */
 public class AlumnoData {
     private Connection conexion;
