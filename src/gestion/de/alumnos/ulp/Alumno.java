@@ -38,7 +38,7 @@ public class Alumno {
         this.fechaNacimiento = fechaNacimiento;
         this.estado = estado;
    }
-//Maxi hace bien el repo
+
     public int getIdAlumno() {
         return idAlumno;
     }

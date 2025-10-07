@@ -5,10 +5,21 @@
  */
 package AccesoDatos;
 
+import gestion.de.alumnos.ulp.Materia;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import org.mariadb.jdbc.Statement;
+
 /**
  *
  * @author Valentin Barros
  */
 public class InscripcionData {
+    private Connection conexion;
+    
     
 }
