@@ -21,25 +21,42 @@ import org.mariadb.jdbc.Statement;
  * @author Valentin Barros
  */
 public class InscripcionData {
+
     private Connection conexion;
-    
-    public InscripcionData(){
+
+    public InscripcionData() {
         conexion = Conexion.getConexion();
     }
-    public void inscribirAlumno(Materia materia, Alumno alumno, Inscripcion inscripcion){
+
+    public void inscribirAlumno(Materia materia, Alumno alumno, Inscripcion inscripcion) {
         String sql = "INSERT INTO inscripcion(idMateria, idAlumno) VALVUES (?,?)";
-        try{
-        PreparedStatement ps = conexion.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-        ps.setInt(1, materia.getIdMateria());
-        ps.setInt(2, alumno.getIdAlumno());
-        ps.executeUpdate();
+        try {
+            PreparedStatement ps = conexion.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, materia.getIdMateria());
+            ps.setInt(2, alumno.getIdAlumno());
+            ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
-            if(rs.next()){
+            if (rs.next()) {
                 inscripcion.setIdMateria(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "Alumno inscripto exitosamente ...");
             }
-        }catch(SQLException ex){
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia ..."+ex.getMessage());
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia ..." + ex.getMessage());
+        }
+    }
+
+    public void deinscribirAlumno(int idMateria, int idAlumno) {
+        String sql = "DELETE FROM inscripcion WHERE idMateria= ? AND idAlumno= ? ";
+        try {
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ps.setInt(1, idMateria);
+            ps.setInt(2, idAlumno);
+            int exito = ps.executeUpdate();
+            if(exito == 1){
+                JOptionPane.showMessageDialog(null, "Inscripcion eliminada ...");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia ..." + ex.getMessage());
         }
     }
 }
