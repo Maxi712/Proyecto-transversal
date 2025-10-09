@@ -71,6 +71,11 @@ public class Menu extends javax.swing.JFrame {
 
         jMInscripcionA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AlumnoX32.png"))); // NOI18N
         jMInscripcionA.setText("Alumno");
+        jMInscripcionA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMInscripcionAActionPerformed(evt);
+            }
+        });
 
         jMIAlumno.setText("Inscripcion de Alumnos");
         jMIAlumno.addActionListener(new java.awt.event.ActionListener() {
@@ -155,7 +160,12 @@ public class Menu extends javax.swing.JFrame {
 
     private void jMIAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIAlumnoActionPerformed
         // TODO add your handling code here:
-        
+        escritorio.removeAll();
+        escritorio.repaint();
+        CargaAlumno form = new CargaAlumno();
+        form.setVisible(true);
+        escritorio.add(form);
+        escritorio.moveToFront(form);
     }//GEN-LAST:event_jMIAlumnoActionPerformed
 
     private void jMICargaMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMICargaMateriaActionPerformed
@@ -202,6 +212,11 @@ public class Menu extends javax.swing.JFrame {
         escritorio.add(form);
         escritorio.moveToFront(form);
     }//GEN-LAST:event_jMIAlumnoXMateriaActionPerformed
+
+    private void jMInscripcionAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMInscripcionAActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jMInscripcionAActionPerformed
 
     /**
      * @param args the command line arguments

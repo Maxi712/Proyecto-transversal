@@ -27,21 +27,248 @@ public class CargaAlumno extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPPrincipal = new javax.swing.JPanel();
+        jPTitulo = new javax.swing.JPanel();
+        jLTitulo = new javax.swing.JLabel();
+        jLCodigo = new javax.swing.JLabel();
+        jTFCodigo = new javax.swing.JTextField();
+        jBBuscar = new javax.swing.JButton();
+        jLNombre = new javax.swing.JLabel();
+        jTFNombre = new javax.swing.JTextField();
+        jLApellido = new javax.swing.JLabel();
+        jTFApellido = new javax.swing.JTextField();
+        jLDocumetno = new javax.swing.JLabel();
+        jTFDocumento = new javax.swing.JTextField();
+        jLFecha = new javax.swing.JLabel();
+        jDCFecha = new com.toedter.calendar.JDateChooser();
+        jLEstado = new javax.swing.JLabel();
+        jRBEstado = new javax.swing.JRadioButton();
+        jBAgregar = new javax.swing.JButton();
+        jBActualizar = new javax.swing.JButton();
+        jBEliminar = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jBSalir = new javax.swing.JButton();
+
+        jPPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPTitulo.setBackground(new java.awt.Color(9, 70, 129));
+
+        jLTitulo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLTitulo.setForeground(new java.awt.Color(255, 162, 11));
+        jLTitulo.setText("Inscripcion de Alumno");
+
+        javax.swing.GroupLayout jPTituloLayout = new javax.swing.GroupLayout(jPTitulo);
+        jPTitulo.setLayout(jPTituloLayout);
+        jPTituloLayout.setHorizontalGroup(
+            jPTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPTituloLayout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addComponent(jLTitulo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPTituloLayout.setVerticalGroup(
+            jPTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPTituloLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLTitulo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jLCodigo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLCodigo.setText("Codigo:");
+
+        jBBuscar.setText("Buscar");
+
+        jLNombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLNombre.setText("Nombre:");
+
+        jLApellido.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLApellido.setText("Apellido:");
+
+        jLDocumetno.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLDocumetno.setText("Documento:");
+
+        jLFecha.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLFecha.setText("Fecha de Nacimiento");
+
+        jLEstado.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLEstado.setText("Estado:");
+
+        jRBEstado.setBackground(new java.awt.Color(255, 255, 255));
+
+        jBAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/7.png"))); // NOI18N
+
+        jBActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/8.png"))); // NOI18N
+
+        jBEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/9.png"))); // NOI18N
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jBSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/exit_16560328.png"))); // NOI18N
+        jBSalir.setText("Salir");
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalirActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPPrincipalLayout = new javax.swing.GroupLayout(jPPrincipal);
+        jPPrincipal.setLayout(jPPrincipalLayout);
+        jPPrincipalLayout.setHorizontalGroup(
+            jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
+            .addGroup(jPPrincipalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPPrincipalLayout.createSequentialGroup()
+                        .addComponent(jSeparator1)
+                        .addContainerGap())
+                    .addGroup(jPPrincipalLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jBSalir)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(36, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPPrincipalLayout.createSequentialGroup()
+                .addGroup(jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPPrincipalLayout.createSequentialGroup()
+                        .addGap(145, 145, 145)
+                        .addGroup(jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPPrincipalLayout.createSequentialGroup()
+                                .addComponent(jLEstado)
+                                .addGap(18, 18, 18)
+                                .addComponent(jRBEstado)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPPrincipalLayout.createSequentialGroup()
+                                .addComponent(jLFecha)
+                                .addGap(18, 18, 18)
+                                .addComponent(jDCFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPPrincipalLayout.createSequentialGroup()
+                                .addComponent(jLDocumetno)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTFDocumento))
+                            .addGroup(jPPrincipalLayout.createSequentialGroup()
+                                .addComponent(jLApellido)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTFApellido))
+                            .addGroup(jPPrincipalLayout.createSequentialGroup()
+                                .addComponent(jLNombre)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTFNombre))
+                            .addGroup(jPPrincipalLayout.createSequentialGroup()
+                                .addComponent(jLCodigo)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTFCodigo)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBBuscar))))
+                    .addGroup(jPPrincipalLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jBAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jBEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
+        );
+        jPPrincipalLayout.setVerticalGroup(
+            jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPPrincipalLayout.createSequentialGroup()
+                .addComponent(jPTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLCodigo)
+                    .addComponent(jTFCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBBuscar))
+                .addGap(18, 18, 18)
+                .addGroup(jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLNombre)
+                    .addComponent(jTFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLApellido)
+                    .addComponent(jTFApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLDocumetno)
+                    .addComponent(jTFDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLFecha)
+                    .addComponent(jDCFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLEstado)
+                    .addComponent(jRBEstado))
+                .addGap(10, 10, 10)
+                .addGroup(jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBEliminar)
+                    .addComponent(jBActualizar)
+                    .addComponent(jBAgregar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jBSalir)
+                .addGap(0, 20, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addComponent(jPPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addComponent(jPPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jBSalirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBActualizar;
+    private javax.swing.JButton jBAgregar;
+    private javax.swing.JButton jBBuscar;
+    private javax.swing.JButton jBEliminar;
+    private javax.swing.JButton jBSalir;
+    private com.toedter.calendar.JDateChooser jDCFecha;
+    private javax.swing.JLabel jLApellido;
+    private javax.swing.JLabel jLCodigo;
+    private javax.swing.JLabel jLDocumetno;
+    private javax.swing.JLabel jLEstado;
+    private javax.swing.JLabel jLFecha;
+    private javax.swing.JLabel jLNombre;
+    private javax.swing.JLabel jLTitulo;
+    private javax.swing.JPanel jPPrincipal;
+    private javax.swing.JPanel jPTitulo;
+    private javax.swing.JRadioButton jRBEstado;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextField jTFApellido;
+    private javax.swing.JTextField jTFCodigo;
+    private javax.swing.JTextField jTFDocumento;
+    private javax.swing.JTextField jTFNombre;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

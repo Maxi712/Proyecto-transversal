@@ -51,7 +51,6 @@ public class InscripcionMateria extends javax.swing.JInternalFrame {
         setPreferredSize(new java.awt.Dimension(519, 614));
 
         jPPrincipal.setBackground(new java.awt.Color(255, 255, 255));
-        jPPrincipal.setOpaque(false);
         jPPrincipal.setPreferredSize(new java.awt.Dimension(519, 593));
 
         javax.swing.GroupLayout jPPrincipalLayout = new javax.swing.GroupLayout(jPPrincipal);
