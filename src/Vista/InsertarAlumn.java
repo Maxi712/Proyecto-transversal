@@ -48,12 +48,6 @@ public class InsertarAlumn extends javax.swing.JFrame {
 
         jLabel4.setText("DNI");
 
-        jTextField1.setText("jTextField1");
-
-        jTextField2.setText("jTextField2");
-
-        jTextField3.setText("jTextField3");
-
         jButton1.setText("Guardar");
 
         jButton2.setText("Cancelar");

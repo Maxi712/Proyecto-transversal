@@ -44,14 +44,11 @@ public class InsertarMateria extends javax.swing.JFrame {
 
         jLabel4.setText("jLabel4");
 
-        jTextField1.setText("jTextField1");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
-
-        jTextField3.setText("jTextField3");
 
         jButton1.setText("Guardar");
 
