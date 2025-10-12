@@ -223,12 +223,7 @@
         <Component class="javax.swing.JComboBox" name="jCBAlumno">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
-              </StringArray>
+              <StringArray count="0"/>
             </Property>
           </Properties>
           <AuxValues>
@@ -246,12 +241,7 @@
         <Component class="javax.swing.JComboBox" name="jCBMateria">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
-              </StringArray>
+              <StringArray count="0"/>
             </Property>
           </Properties>
           <AuxValues>
@@ -263,6 +253,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/4.png"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Agregar  Inscripcion"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jBActualizar">
@@ -270,6 +261,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/5.png"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Modificar Inscripcion"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jBEliminar">
@@ -277,6 +269,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/6.png"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Eliminar Inscripcion"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator1">

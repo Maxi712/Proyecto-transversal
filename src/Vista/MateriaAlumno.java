@@ -5,6 +5,9 @@
  */
 package Vista;
 
+import AccesoDatos.MateriaData;
+import gestion.de.alumnos.ulp.Materia;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -14,12 +17,15 @@ import javax.swing.table.DefaultTableModel;
 public class MateriaAlumno extends javax.swing.JInternalFrame {
 
     private DefaultTableModel modelo = new DefaultTableModel();
+    private MateriaData materiaData = new MateriaData();
+
     /**
      * Creates new form MateriaAlumno
      */
     public MateriaAlumno() {
         initComponents();
         armarCabecera();
+        cargarCombo();
     }
 
     /**
@@ -68,8 +74,6 @@ public class MateriaAlumno extends javax.swing.JInternalFrame {
 
         jLMateria.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLMateria.setText("Materia:");
-
-        jCBMateria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jTAlumno.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -157,7 +161,7 @@ public class MateriaAlumno extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTAlumno;
     // End of variables declaration//GEN-END:variables
 
-private void armarCabecera() {
+    private void armarCabecera() {
         modelo.addColumn("Codigo");
         modelo.addColumn("Nombre");
         modelo.addColumn("Apellido");
@@ -165,5 +169,13 @@ private void armarCabecera() {
         modelo.addColumn("Fecha de Nacimiento");
         modelo.addColumn("Estado");
         jTAlumno.setModel(modelo);
+    }
+    
+    private void cargarCombo(){
+        ArrayList<Materia> materia = new ArrayList();
+        materia = materiaData.listarMateria();
+        for(Materia m : materia){
+            jCBMateria.addItem(m.toString());
+        }
     }
 }

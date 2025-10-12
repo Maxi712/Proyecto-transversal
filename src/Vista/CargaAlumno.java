@@ -131,10 +131,13 @@ public class CargaAlumno extends javax.swing.JInternalFrame {
         jRBEstado.setBackground(new java.awt.Color(255, 255, 255));
 
         jBAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/7.png"))); // NOI18N
+        jBAgregar.setToolTipText("Agregar Alumno");
 
         jBActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/8.png"))); // NOI18N
+        jBActualizar.setToolTipText("Modificar Alumno");
 
         jBEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/9.png"))); // NOI18N
+        jBEliminar.setToolTipText("Eliminar Alumno");
 
         jTAlumno.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

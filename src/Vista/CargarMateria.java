@@ -121,10 +121,13 @@ public class CargarMateria extends javax.swing.JInternalFrame {
         jRBEstado.setBackground(new java.awt.Color(255, 255, 255));
 
         jBAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1.png"))); // NOI18N
+        jBAgregar.setToolTipText("Agregar Materia");
 
         jBActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/3.png"))); // NOI18N
+        jBActualizar.setToolTipText("Modificar Materia");
 
         jBEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/2.png"))); // NOI18N
+        jBEliminar.setToolTipText("Eliminar Materia");
 
         jTMateria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -209,11 +212,12 @@ public class CargarMateria extends javax.swing.JInternalFrame {
                     .addComponent(jLNombre)
                     .addComponent(jTFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLAño)
-                    .addComponent(jTFAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLEstado)
-                    .addComponent(jRBEstado))
+                .addGroup(jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jRBEstado)
+                    .addGroup(jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLAño)
+                        .addComponent(jTFAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLEstado)))
                 .addGap(18, 18, 18)
                 .addGroup(jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jBActualizar)

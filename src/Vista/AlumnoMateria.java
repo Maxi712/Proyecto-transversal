@@ -5,6 +5,9 @@
  */
 package Vista;
 
+import AccesoDatos.AlumnoData;
+import gestion.de.alumnos.ulp.Alumno;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -14,12 +17,14 @@ import javax.swing.table.DefaultTableModel;
 public class AlumnoMateria extends javax.swing.JInternalFrame {
 
     private DefaultTableModel modelo = new DefaultTableModel();
+    private AlumnoData alumnoData = new AlumnoData();
     /**
      * Creates new form AlumnoMateria
      */
     public AlumnoMateria() {
         initComponents();
         armarCabecera();
+        cargarCombo();
     }
 
     /**
@@ -69,8 +74,6 @@ public class AlumnoMateria extends javax.swing.JInternalFrame {
 
         jLAlumno.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLAlumno.setText("Alumno:");
-
-        jCBAlumno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jTMateria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -159,11 +162,20 @@ public class AlumnoMateria extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTMateria;
     // End of variables declaration//GEN-END:variables
 
-private void armarCabecera() {
+    private void armarCabecera() {
         modelo.addColumn("Codigo");
         modelo.addColumn("Nombre");
         modelo.addColumn("Año");
         modelo.addColumn("Estado");
         jTMateria.setModel(modelo);
     }
+    
+    private void cargarCombo(){
+        ArrayList<Alumno> alumno = new ArrayList();
+        alumno = alumnoData.listarAlumno();
+        for(Alumno a : alumno){
+            jCBAlumno.addItem(a.toString());
+        }
+    }
+    
 }

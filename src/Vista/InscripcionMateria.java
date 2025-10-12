@@ -5,6 +5,11 @@
  */
 package Vista;
 
+import AccesoDatos.AlumnoData;
+import AccesoDatos.MateriaData;
+import gestion.de.alumnos.ulp.Alumno;
+import gestion.de.alumnos.ulp.Materia;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -17,12 +22,16 @@ import javax.swing.table.DefaultTableModel;
 public class InscripcionMateria extends javax.swing.JInternalFrame {
     
     private DefaultTableModel modelo = new DefaultTableModel();
+    private MateriaData materiaData = new MateriaData();
+    private AlumnoData alumnoData = new AlumnoData();
     /**
      * Creates new form InscripcionMateria1
      */
     public InscripcionMateria() {
         initComponents();
         armarCabecera();
+        cargarComboMateria();
+        cargarComboAlumno();
     }
 
     /**
@@ -103,18 +112,17 @@ public class InscripcionMateria extends javax.swing.JInternalFrame {
         jLAlumno.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLAlumno.setText("Alumno:");
 
-        jCBAlumno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLMateria.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLMateria.setText("Materia:");
 
-        jCBMateria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jBAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/4.png"))); // NOI18N
+        jBAgregar.setToolTipText("Agregar  Inscripcion");
 
         jBActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/5.png"))); // NOI18N
+        jBActualizar.setToolTipText("Modificar Inscripcion");
 
         jBEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/6.png"))); // NOI18N
+        jBEliminar.setToolTipText("Eliminar Inscripcion");
 
         jTInscripcion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -296,5 +304,21 @@ public class InscripcionMateria extends javax.swing.JInternalFrame {
         jTFNota.setText("");
         jCBAlumno.setSelectedItem(-1);
         jCBMateria.setSelectedItem(-1);
+    }
+    
+    private void cargarComboMateria(){
+        ArrayList<Materia> materia = new ArrayList();
+        materia = materiaData.listarMateria();
+        for(Materia m : materia){
+            jCBMateria.addItem(m.toString());
+        }
+    }
+    
+    private void cargarComboAlumno(){
+        ArrayList<Alumno> alumno = new ArrayList();
+        alumno = alumnoData.listarAlumno();
+        for(Alumno a : alumno){
+            jCBAlumno.addItem(a.toString());
+        }
     }
 }
