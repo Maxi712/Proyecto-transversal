@@ -5,17 +5,21 @@
  */
 package Vista;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Valentin Barros
  */
 public class AlumnoMateria extends javax.swing.JInternalFrame {
 
+    private DefaultTableModel modelo = new DefaultTableModel();
     /**
      * Creates new form AlumnoMateria
      */
     public AlumnoMateria() {
         initComponents();
+        armarCabecera();
     }
 
     /**
@@ -33,7 +37,7 @@ public class AlumnoMateria extends javax.swing.JInternalFrame {
         jLAlumno = new javax.swing.JLabel();
         jCBAlumno = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTMateria = new javax.swing.JTable();
         jBSalir = new javax.swing.JButton();
 
         jPPricipal.setBackground(new java.awt.Color(255, 255, 255));
@@ -68,7 +72,7 @@ public class AlumnoMateria extends javax.swing.JInternalFrame {
 
         jCBAlumno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTMateria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -79,7 +83,7 @@ public class AlumnoMateria extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTMateria);
 
         jBSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/exit_16560328.png"))); // NOI18N
         jBSalir.setText("Salir");
@@ -132,7 +136,7 @@ public class AlumnoMateria extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPPricipal, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPPricipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -152,6 +156,14 @@ public class AlumnoMateria extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPPricipal;
     private javax.swing.JPanel jPTitulo;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTMateria;
     // End of variables declaration//GEN-END:variables
+
+private void armarCabecera() {
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Año");
+        modelo.addColumn("Estado");
+        jTMateria.setModel(modelo);
+    }
 }

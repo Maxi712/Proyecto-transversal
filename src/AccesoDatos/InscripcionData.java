@@ -37,7 +37,7 @@ public class InscripcionData {
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
-                inscripcion.setIdMateria(rs.getInt(1));
+                inscripcion.getIdMateria().setIdMateria(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "Alumno inscripto exitosamente ...");
             }
         } catch (SQLException ex) {

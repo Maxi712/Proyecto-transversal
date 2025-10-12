@@ -5,17 +5,21 @@
  */
 package Vista;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Valentin Barros
  */
 public class InscripcionMateria extends javax.swing.JInternalFrame {
-
+    
+    private DefaultTableModel modelo = new DefaultTableModel();
     /**
-     * Creates new form InscripcionMateria
+     * Creates new form InscripcionMateria1
      */
     public InscripcionMateria() {
         initComponents();
+        armarCabecera();
     }
 
     /**
@@ -30,10 +34,10 @@ public class InscripcionMateria extends javax.swing.JInternalFrame {
         jPPrincipal = new javax.swing.JPanel();
         jPTitulo = new javax.swing.JPanel();
         jLTitulo = new javax.swing.JLabel();
-        jLNota = new javax.swing.JLabel();
         jLCodigo = new javax.swing.JLabel();
         jTFCodigo = new javax.swing.JTextField();
         jBBuscar = new javax.swing.JButton();
+        jLNota = new javax.swing.JLabel();
         jTFNota = new javax.swing.JTextField();
         jLAlumno = new javax.swing.JLabel();
         jCBAlumno = new javax.swing.JComboBox<>();
@@ -44,42 +48,26 @@ public class InscripcionMateria extends javax.swing.JInternalFrame {
         jBEliminar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTbInscripcion = new javax.swing.JTable();
+        jTInscripcion = new javax.swing.JTable();
         jBSalir = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(519, 614));
-
         jPPrincipal.setBackground(new java.awt.Color(255, 255, 255));
-        jPPrincipal.setPreferredSize(new java.awt.Dimension(519, 593));
-
-        javax.swing.GroupLayout jPPrincipalLayout = new javax.swing.GroupLayout(jPPrincipal);
-        jPPrincipal.setLayout(jPPrincipalLayout);
-        jPPrincipalLayout.setHorizontalGroup(
-            jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPPrincipalLayout.setVerticalGroup(
-            jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
 
         jPTitulo.setBackground(new java.awt.Color(9, 70, 129));
         jPTitulo.setPreferredSize(new java.awt.Dimension(503, 51));
-        jPTitulo.setRequestFocusEnabled(false);
 
         jLTitulo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLTitulo.setForeground(new java.awt.Color(255, 162, 11));
-        jLTitulo.setText("Inscripcion Materias");
+        jLTitulo.setText("Inscripcion Materia");
 
         javax.swing.GroupLayout jPTituloLayout = new javax.swing.GroupLayout(jPTitulo);
         jPTitulo.setLayout(jPTituloLayout);
         jPTituloLayout.setHorizontalGroup(
             jPTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPTituloLayout.createSequentialGroup()
-                .addGap(130, 130, 130)
+                .addGap(136, 136, 136)
                 .addComponent(jLTitulo)
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPTituloLayout.setVerticalGroup(
             jPTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,13 +77,13 @@ public class InscripcionMateria extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLNota.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLNota.setText("Nota:");
-
         jLCodigo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLCodigo.setText("Codigo:");
 
         jBBuscar.setText("Buscar");
+
+        jLNota.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLNota.setText("Nota:");
 
         jLAlumno.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLAlumno.setText("Alumno:");
@@ -113,11 +101,7 @@ public class InscripcionMateria extends javax.swing.JInternalFrame {
 
         jBEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/6.png"))); // NOI18N
 
-        jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
-
-        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
-
-        jTbInscripcion.setModel(new javax.swing.table.DefaultTableModel(
+        jTInscripcion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -128,7 +112,7 @@ public class InscripcionMateria extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTbInscripcion);
+        jScrollPane1.setViewportView(jTInscripcion);
 
         jBSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/exit_16560328.png"))); // NOI18N
         jBSalir.setText("Salir");
@@ -138,84 +122,95 @@ public class InscripcionMateria extends javax.swing.JInternalFrame {
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(126, 126, 126)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLCodigo)
-                            .addComponent(jLNota)
-                            .addComponent(jLAlumno)
-                            .addComponent(jLMateria))
+        javax.swing.GroupLayout jPPrincipalLayout = new javax.swing.GroupLayout(jPPrincipal);
+        jPPrincipal.setLayout(jPPrincipalLayout);
+        jPPrincipalLayout.setHorizontalGroup(
+            jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPPrincipalLayout.createSequentialGroup()
+                .addGap(153, 153, 153)
+                .addGroup(jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPPrincipalLayout.createSequentialGroup()
+                        .addComponent(jLMateria)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTFCodigo)
-                                    .addComponent(jTFNota, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(jBBuscar))
-                            .addComponent(jCBAlumno, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jCBMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jBSalir)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jBAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jBActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jBEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40)))))
-                .addComponent(jPPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
+                        .addComponent(jCBMateria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPPrincipalLayout.createSequentialGroup()
+                        .addComponent(jLAlumno)
+                        .addGap(18, 18, 18)
+                        .addComponent(jCBAlumno, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPPrincipalLayout.createSequentialGroup()
+                        .addGroup(jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLCodigo)
+                            .addComponent(jLNota))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTFCodigo)
+                            .addComponent(jTFNota, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jBBuscar)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPPrincipalLayout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addGroup(jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPPrincipalLayout.createSequentialGroup()
+                            .addComponent(jBAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jBActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jBEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(37, 37, 37))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPPrincipalLayout.createSequentialGroup()
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(22, 22, 22)))
+                    .addGroup(jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jBSalir)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
+        jPPrincipalLayout.setVerticalGroup(
+            jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPPrincipalLayout.createSequentialGroup()
                 .addComponent(jPTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLCodigo)
                     .addComponent(jTFCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBBuscar))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLNota)
                     .addComponent(jTFNota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLAlumno)
                     .addComponent(jCBAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLMateria)
                     .addComponent(jCBMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBAgregar)
+                .addGroup(jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBActualizar)
+                    .addComponent(jBAgregar)
                     .addComponent(jBEliminar))
                 .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jBSalir)
-                .addGap(0, 20, Short.MAX_VALUE))
+                .addGap(0, 28, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -246,6 +241,14 @@ public class InscripcionMateria extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTFCodigo;
     private javax.swing.JTextField jTFNota;
-    private javax.swing.JTable jTbInscripcion;
+    private javax.swing.JTable jTInscripcion;
     // End of variables declaration//GEN-END:variables
+
+    private void armarCabecera(){
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Nota");
+        modelo.addColumn("Alumno");
+        modelo.addColumn("Materia");
+        jTInscripcion.setModel(modelo);
+    }
 }

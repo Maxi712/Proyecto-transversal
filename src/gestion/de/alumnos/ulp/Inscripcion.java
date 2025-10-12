@@ -12,17 +12,17 @@ package gestion.de.alumnos.ulp;
 public class Inscripcion {
     private int idInscripto;
     private int nota;
-    private int idAlumno;
-    private int idMateria;
+    private Alumno alumno;
+    private Materia materia;
 
     public Inscripcion() {
     }
 
-    public Inscripcion(int idInscripto, int nota, int idAlumno, int idMateria) {
+    public Inscripcion(int idInscripto, int nota, Alumno alumno, Materia materia) {
         this.idInscripto = idInscripto;
         this.nota = nota;
-        this.idAlumno = idAlumno;
-        this.idMateria = idMateria;
+        this.alumno = alumno;
+        this.materia = materia;
     }
 
     public int getIdInscripto() {
@@ -41,20 +41,20 @@ public class Inscripcion {
         this.nota = nota;
     }
 
-    public int getIdAlumno() {
-        return idAlumno;
+    public Alumno getIdAlumno() {
+        return alumno;
     }
 
-    public void setIdAlumno(int idAlumno) {
-        this.idAlumno = idAlumno;
+    public void setIdAlumno(Alumno alumno) {
+        this.alumno = alumno;
     }
 
-    public int getIdMateria() {
-        return idMateria;
+    public Materia getIdMateria() {
+        return materia;
     }
 
-    public void setIdMateria(int idMateria) {
-        this.idMateria = idMateria;
+    public void setIdMateria(Materia materia) {
+        this.materia = materia;
     }
     
     

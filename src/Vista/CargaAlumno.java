@@ -5,17 +5,20 @@
  */
 package Vista;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Valentin Barros
  */
 public class CargaAlumno extends javax.swing.JInternalFrame {
-
+    private DefaultTableModel modelo = new DefaultTableModel();
     /**
      * Creates new form CargaAlumno
      */
     public CargaAlumno() {
         initComponents();
+        armarCabecera();
     }
 
     /**
@@ -48,7 +51,7 @@ public class CargaAlumno extends javax.swing.JInternalFrame {
         jBEliminar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTAlumno = new javax.swing.JTable();
         jBSalir = new javax.swing.JButton();
 
         jPPrincipal.setBackground(new java.awt.Color(255, 255, 255));
@@ -104,7 +107,7 @@ public class CargaAlumno extends javax.swing.JInternalFrame {
 
         jBEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/9.png"))); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTAlumno.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -115,7 +118,7 @@ public class CargaAlumno extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTAlumno);
 
         jBSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/exit_16560328.png"))); // NOI18N
         jBSalir.setText("Salir");
@@ -129,7 +132,7 @@ public class CargaAlumno extends javax.swing.JInternalFrame {
         jPPrincipal.setLayout(jPPrincipalLayout);
         jPPrincipalLayout.setHorizontalGroup(
             jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
+            .addComponent(jPTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,10 +268,21 @@ public class CargaAlumno extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jRBEstado;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTable jTAlumno;
     private javax.swing.JTextField jTFApellido;
     private javax.swing.JTextField jTFCodigo;
     private javax.swing.JTextField jTFDocumento;
     private javax.swing.JTextField jTFNombre;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+private void armarCabecera() {
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Apellido");
+        modelo.addColumn("Documento");
+        modelo.addColumn("Fecha de Nacimiento");
+        modelo.addColumn("Estado");
+        jTAlumno.setModel(modelo);
+    }
+
 }

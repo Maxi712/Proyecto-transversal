@@ -5,17 +5,21 @@
  */
 package Vista;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Valentin Barros
  */
 public class MateriaAlumno extends javax.swing.JInternalFrame {
 
+    private DefaultTableModel modelo = new DefaultTableModel();
     /**
      * Creates new form MateriaAlumno
      */
     public MateriaAlumno() {
         initComponents();
+        armarCabecera();
     }
 
     /**
@@ -152,4 +156,14 @@ public class MateriaAlumno extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTAlumno;
     // End of variables declaration//GEN-END:variables
+
+private void armarCabecera() {
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Apellido");
+        modelo.addColumn("Documento");
+        modelo.addColumn("Fecha de Nacimiento");
+        modelo.addColumn("Estado");
+        jTAlumno.setModel(modelo);
+    }
 }
