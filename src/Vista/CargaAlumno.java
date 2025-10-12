@@ -5,6 +5,9 @@
  */
 package Vista;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -12,7 +15,9 @@ import javax.swing.table.DefaultTableModel;
  * @author Valentin Barros
  */
 public class CargaAlumno extends javax.swing.JInternalFrame {
+
     private DefaultTableModel modelo = new DefaultTableModel();
+
     /**
      * Creates new form CargaAlumno
      */
@@ -82,16 +87,40 @@ public class CargaAlumno extends javax.swing.JInternalFrame {
         jLCodigo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLCodigo.setText("Codigo:");
 
+        jTFCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTFCodigoKeyReleased(evt);
+            }
+        });
+
         jBBuscar.setText("Buscar");
 
         jLNombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLNombre.setText("Nombre:");
 
+        jTFNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTFNombreKeyReleased(evt);
+            }
+        });
+
         jLApellido.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLApellido.setText("Apellido:");
 
+        jTFApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTFApellidoKeyReleased(evt);
+            }
+        });
+
         jLDocumetno.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLDocumetno.setText("Documento:");
+
+        jTFDocumento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTFDocumentoKeyReleased(evt);
+            }
+        });
 
         jLFecha.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLFecha.setText("Fecha de Nacimiento");
@@ -248,6 +277,54 @@ public class CargaAlumno extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
 
+    private void jTFCodigoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFCodigoKeyReleased
+        // TODO add your handling code here:
+        Pattern patron = Pattern.compile("[0-9_.]+");
+        String nro = this.jTFCodigo.getText();
+        Matcher m = patron.matcher(nro);
+        if (!m.matches() && nro.length() > 0) {
+            JOptionPane.showMessageDialog(this, "No es un numero");
+            this.jTFCodigo.setText(nro.substring(0, nro.length() - 1));
+            this.jTFCodigo.requestFocus();
+        }
+    }//GEN-LAST:event_jTFCodigoKeyReleased
+
+    private void jTFDocumentoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFDocumentoKeyReleased
+        // TODO add your handling code here:
+        Pattern patron = Pattern.compile("[0-9_.]+");
+        String nro = this.jTFDocumento.getText();
+        Matcher m = patron.matcher(nro);
+        if (!m.matches() && nro.length() > 0) {
+            JOptionPane.showMessageDialog(this, "No es un numero");
+            this.jTFDocumento.setText(nro.substring(0, nro.length() - 1));
+            this.jTFDocumento.requestFocus();
+        }
+    }//GEN-LAST:event_jTFDocumentoKeyReleased
+
+    private void jTFNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFNombreKeyReleased
+        // TODO add your handling code here:
+        Pattern patron = Pattern.compile("[a-zA-Z_ \\t\\n\\x0B\\f\\r]+");
+        String nro = this.jTFNombre.getText();
+        Matcher m = patron.matcher(nro);
+        if (!m.matches() && nro.length() > 0) {
+            JOptionPane.showMessageDialog(this, "No es una letra");
+            this.jTFNombre.setText(nro.substring(0, nro.length() - 1));
+            this.jTFNombre.requestFocus();
+        }
+    }//GEN-LAST:event_jTFNombreKeyReleased
+
+    private void jTFApellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFApellidoKeyReleased
+        // TODO add your handling code here:
+        Pattern patron = Pattern.compile("[a-zA-Z_ \\t\\n\\x0B\\f\\r]+");
+        String nro = this.jTFApellido.getText();
+        Matcher m = patron.matcher(nro);
+        if (!m.matches() && nro.length() > 0) {
+            JOptionPane.showMessageDialog(this, "No es una letra");
+            this.jTFApellido.setText(nro.substring(0, nro.length() - 1));
+            this.jTFApellido.requestFocus();
+        }
+    }//GEN-LAST:event_jTFApellidoKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBActualizar;
@@ -275,7 +352,7 @@ public class CargaAlumno extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTFNombre;
     // End of variables declaration//GEN-END:variables
 
-private void armarCabecera() {
+    private void armarCabecera() {
         modelo.addColumn("Codigo");
         modelo.addColumn("Nombre");
         modelo.addColumn("Apellido");
@@ -284,5 +361,14 @@ private void armarCabecera() {
         modelo.addColumn("Estado");
         jTAlumno.setModel(modelo);
     }
-
+    
+    private void limpiarCampos(){
+        jTFCodigo.setText("");
+        jTFNombre.setText("");
+        jTFApellido.setText("");
+        jTFDocumento.setText("");
+        jDCFecha.setDate(null);
+        jRBEstado.setSelected(false);
+    }
+   
 }

@@ -213,6 +213,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTFCodigo">
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTFCodigoKeyReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jBBuscar">
           <Properties>
@@ -228,6 +231,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTFNombre">
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTFNombreKeyReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLApellido">
           <Properties>
@@ -238,6 +244,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTFApellido">
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTFApellidoKeyReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLDocumetno">
           <Properties>
@@ -248,6 +257,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTFDocumento">
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTFDocumentoKeyReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLFecha">
           <Properties>

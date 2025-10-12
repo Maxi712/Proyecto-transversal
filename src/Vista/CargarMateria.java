@@ -5,6 +5,9 @@
  */
 package Vista;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -13,7 +16,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CargarMateria extends javax.swing.JInternalFrame {
 
-     private DefaultTableModel modelo = new DefaultTableModel();
+    private DefaultTableModel modelo = new DefaultTableModel();
+
     /**
      * Creates new form CargarMateria1
      */
@@ -85,14 +89,31 @@ public class CargarMateria extends javax.swing.JInternalFrame {
                 jTFCodigoActionPerformed(evt);
             }
         });
+        jTFCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTFCodigoKeyReleased(evt);
+            }
+        });
 
         jBBuscar.setText("Buscar");
 
         jLNombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLNombre.setText("Nombre:");
 
+        jTFNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTFNombreKeyReleased(evt);
+            }
+        });
+
         jLAño.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLAño.setText("Año:");
+
+        jTFAño.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTFAñoKeyReleased(evt);
+            }
+        });
 
         jLEstado.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLEstado.setText("Estado:");
@@ -230,6 +251,42 @@ public class CargarMateria extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
 
+    private void jTFNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFNombreKeyReleased
+        // TODO add your handling code here:
+        Pattern patron = Pattern.compile("[a-zA-Z_ \\t\\n\\x0B\\f\\r]+");
+        String nro = this.jTFNombre.getText();
+        Matcher m = patron.matcher(nro);
+        if (!m.matches() && nro.length() > 0) {
+            JOptionPane.showMessageDialog(this, "No es una letra");
+            this.jTFNombre.setText(nro.substring(0, nro.length() - 1));
+            this.jTFNombre.requestFocus();
+        }
+    }//GEN-LAST:event_jTFNombreKeyReleased
+
+    private void jTFCodigoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFCodigoKeyReleased
+        // TODO add your handling code here:
+        Pattern patron = Pattern.compile("[0-9_.]+");
+        String nro = this.jTFCodigo.getText();
+        Matcher m = patron.matcher(nro);
+        if (!m.matches() && nro.length() > 0) {
+            JOptionPane.showMessageDialog(this, "No es un numero");
+            this.jTFCodigo.setText(nro.substring(0, nro.length() - 1));
+            this.jTFCodigo.requestFocus();
+        }
+    }//GEN-LAST:event_jTFCodigoKeyReleased
+
+    private void jTFAñoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFAñoKeyReleased
+        // TODO add your handling code here:
+        Pattern patron = Pattern.compile("[0-9_.]+");
+        String nro = this.jTFAño.getText();
+        Matcher m = patron.matcher(nro);
+        if (!m.matches() && nro.length() > 0) {
+            JOptionPane.showMessageDialog(this, "No es un numero");
+            this.jTFAño.setText(nro.substring(0, nro.length() - 1));
+            this.jTFAño.requestFocus();
+        }
+    }//GEN-LAST:event_jTFAñoKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBActualizar;
@@ -253,11 +310,18 @@ public class CargarMateria extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTMateria;
     // End of variables declaration//GEN-END:variables
 
-private void armarCabecera() {
+    private void armarCabecera() {
         modelo.addColumn("Codigo");
         modelo.addColumn("Nombre");
         modelo.addColumn("Año");
         modelo.addColumn("Estado");
         jTMateria.setModel(modelo);
+    }
+    
+    private void limpiarCampos(){
+        jTFCodigo.setText("");
+        jTFNombre.setText("");
+        jTFAño.setText("");
+        jRBEstado.setSelected(false);
     }
 }

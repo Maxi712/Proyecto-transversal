@@ -11,14 +11,14 @@ package gestion.de.alumnos.ulp;
  */
 public class Inscripcion {
     private int idInscripto;
-    private int nota;
+    private float nota;
     private Alumno alumno;
     private Materia materia;
 
     public Inscripcion() {
     }
 
-    public Inscripcion(int idInscripto, int nota, Alumno alumno, Materia materia) {
+    public Inscripcion(int idInscripto, float nota, Alumno alumno, Materia materia) {
         this.idInscripto = idInscripto;
         this.nota = nota;
         this.alumno = alumno;
@@ -33,11 +33,11 @@ public class Inscripcion {
         this.idInscripto = idInscripto;
     }
 
-    public int getNota() {
+    public float getNota() {
         return nota;
     }
 
-    public void setNota(int nota) {
+    public void setNota(float nota) {
         this.nota = nota;
     }
 

@@ -193,6 +193,7 @@
         <Component class="javax.swing.JTextField" name="jTFCodigo">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFCodigoActionPerformed"/>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTFCodigoKeyReleased"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jBBuscar">
@@ -209,6 +210,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTFNombre">
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTFNombreKeyReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLA&#xf1;o">
           <Properties>
@@ -219,6 +223,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTFA&#xf1;o">
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTFA&#xf1;oKeyReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLEstado">
           <Properties>

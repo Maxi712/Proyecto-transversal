@@ -190,6 +190,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTFCodigo">
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTFCodigoKeyReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jBBuscar">
           <Properties>
@@ -205,6 +208,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTFNota">
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTFNotaKeyReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLAlumno">
           <Properties>

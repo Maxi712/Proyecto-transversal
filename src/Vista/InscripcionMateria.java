@@ -5,6 +5,9 @@
  */
 package Vista;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -80,10 +83,22 @@ public class InscripcionMateria extends javax.swing.JInternalFrame {
         jLCodigo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLCodigo.setText("Codigo:");
 
+        jTFCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTFCodigoKeyReleased(evt);
+            }
+        });
+
         jBBuscar.setText("Buscar");
 
         jLNota.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLNota.setText("Nota:");
+
+        jTFNota.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTFNotaKeyReleased(evt);
+            }
+        });
 
         jLAlumno.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLAlumno.setText("Alumno:");
@@ -221,6 +236,30 @@ public class InscripcionMateria extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
 
+    private void jTFCodigoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFCodigoKeyReleased
+        // TODO add your handling code here:
+        Pattern patron = Pattern.compile("[0-9_.]+");
+        String nro = this.jTFCodigo.getText();
+        Matcher m = patron.matcher(nro);
+        if (!m.matches() && nro.length() > 0) {
+            JOptionPane.showMessageDialog(this, "No es un numero");
+            this.jTFCodigo.setText(nro.substring(0, nro.length() - 1));
+            this.jTFCodigo.requestFocus();
+        }
+    }//GEN-LAST:event_jTFCodigoKeyReleased
+
+    private void jTFNotaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFNotaKeyReleased
+        // TODO add your handling code here:
+        Pattern patron = Pattern.compile("[0-9_.]+");
+        String nro = this.jTFNota.getText();
+        Matcher m = patron.matcher(nro);
+        if (!m.matches() && nro.length() > 0) {
+            JOptionPane.showMessageDialog(this, "No es un numero");
+            this.jTFNota.setText(nro.substring(0, nro.length() - 1));
+            this.jTFNota.requestFocus();
+        }
+    }//GEN-LAST:event_jTFNotaKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBActualizar;
@@ -250,5 +289,12 @@ public class InscripcionMateria extends javax.swing.JInternalFrame {
         modelo.addColumn("Alumno");
         modelo.addColumn("Materia");
         jTInscripcion.setModel(modelo);
+    }
+    
+    private void limpiarCampos(){
+        jTFCodigo.setText("");
+        jTFNota.setText("");
+        jCBAlumno.setSelectedItem(-1);
+        jCBMateria.setSelectedItem(-1);
     }
 }
