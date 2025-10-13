@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Vista;
+package ClasesAuxiliares;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Insets;

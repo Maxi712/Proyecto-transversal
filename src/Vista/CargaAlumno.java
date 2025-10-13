@@ -5,6 +5,13 @@
  */
 package Vista;
 
+import AccesoDatos.AlumnoData;
+import gestion.de.alumnos.ulp.Alumno;
+import java.util.Date;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -17,6 +24,7 @@ import javax.swing.table.DefaultTableModel;
 public class CargaAlumno extends javax.swing.JInternalFrame {
 
     private DefaultTableModel modelo = new DefaultTableModel();
+    AlumnoData alumnoData = new AlumnoData();
 
     /**
      * Creates new form CargaAlumno
@@ -24,6 +32,7 @@ public class CargaAlumno extends javax.swing.JInternalFrame {
     public CargaAlumno() {
         initComponents();
         armarCabecera();
+        cargarDatosTabla();
     }
 
     /**
@@ -94,6 +103,11 @@ public class CargaAlumno extends javax.swing.JInternalFrame {
         });
 
         jBBuscar.setText("Buscar");
+        jBBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBBuscarActionPerformed(evt);
+            }
+        });
 
         jLNombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLNombre.setText("Nombre:");
@@ -132,12 +146,27 @@ public class CargaAlumno extends javax.swing.JInternalFrame {
 
         jBAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/7.png"))); // NOI18N
         jBAgregar.setToolTipText("Agregar Alumno");
+        jBAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAgregarActionPerformed(evt);
+            }
+        });
 
         jBActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/8.png"))); // NOI18N
         jBActualizar.setToolTipText("Modificar Alumno");
+        jBActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBActualizarActionPerformed(evt);
+            }
+        });
 
         jBEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/9.png"))); // NOI18N
         jBEliminar.setToolTipText("Eliminar Alumno");
+        jBEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEliminarActionPerformed(evt);
+            }
+        });
 
         jTAlumno.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -328,6 +357,82 @@ public class CargaAlumno extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jTFApellidoKeyReleased
 
+    private void jBAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAgregarActionPerformed
+        // TODO add your handling code here:
+        try{
+            if(!jTFNombre.getText().isEmpty() && !jTFApellido.getText().isEmpty() && !jTFDocumento.getText().isEmpty() && jDCFecha.getDate() != null){
+                String nombre = jTFNombre.getText();
+                String apellido = jTFApellido.getText();
+                int documento = Integer.parseInt(jTFDocumento.getText());
+                Date fecha = this.jDCFecha.getDate();
+                LocalDate nacimiento = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                boolean estado = jRBEstado.isSelected();
+                Alumno a = new Alumno(documento, apellido, nombre, nacimiento, estado);
+                alumnoData.guardarAlumno(a);  
+            }
+            limpiarCampos();
+            modelo.setRowCount(0);
+            cargarDatosTabla();
+        }catch(NumberFormatException ex){
+            System.out.println(ex.getLocalizedMessage());
+            JOptionPane.showMessageDialog(null, "Numero no valido" +ex.getMessage());
+        }
+    }//GEN-LAST:event_jBAgregarActionPerformed
+
+    private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
+        // TODO add your handling code here:
+        ArrayList<Alumno> alumno = new ArrayList();
+        alumno= alumnoData.listarAlumno();
+        for(Alumno a : alumno){
+            if(a.getIdAlumno() == Integer.parseInt(jTFCodigo.getText())){
+                jTFNombre.setText(a.getNombre());
+                jTFApellido.setText(a.getApellido());
+                jTFDocumento.setText(Integer.toString(a.getDni()));
+                Date fecha = Date.from(a.getFechaNacimiento().atStartOfDay(ZoneId.systemDefault()).toInstant());
+                jDCFecha.setDate(fecha);
+                jRBEstado.setSelected(a.isEstado());
+            }
+        }
+    }//GEN-LAST:event_jBBuscarActionPerformed
+
+    private void jBActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBActualizarActionPerformed
+        // TODO add your handling code here:
+        try{
+            if(!jTFNombre.getText().isEmpty() && !jTFApellido.getText().isEmpty() && !jTFDocumento.getText().isEmpty() && jDCFecha.getDate() != null){
+                int idAlumno = Integer.parseInt(jTFCodigo.getText());
+                String nombre = jTFNombre.getText();
+                String apellido = jTFApellido.getText();
+                int documento = Integer.parseInt(jTFDocumento.getText());
+                Date fecha = this.jDCFecha.getDate();
+                LocalDate nacimiento = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                boolean estado = jRBEstado.isSelected();
+                Alumno a = new Alumno(idAlumno,documento, apellido, nombre, nacimiento, estado);
+                alumnoData.modificarAlumno(a);
+                System.out.println(a.getIdAlumno());
+            }
+            limpiarCampos();
+            modelo.setRowCount(0);
+            cargarDatosTabla();
+        }catch(NumberFormatException ex){
+            System.out.println(ex.getLocalizedMessage());
+            JOptionPane.showMessageDialog(null, "Numero no valido" +ex.getMessage());
+        }
+    }//GEN-LAST:event_jBActualizarActionPerformed
+
+    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
+        // TODO add your handling code here:
+        try{
+            int idAlumno = Integer.parseInt(jTFCodigo.getText());
+            alumnoData.eliminarAlumno(idAlumno);
+            limpiarCampos();
+            modelo.setRowCount(0);
+            cargarDatosTabla();
+        }catch(NumberFormatException ex){
+            System.out.println(ex.getLocalizedMessage());
+            JOptionPane.showMessageDialog(null, "Numero no valido" +ex.getMessage());
+        }
+    }//GEN-LAST:event_jBEliminarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBActualizar;
@@ -363,6 +468,19 @@ public class CargaAlumno extends javax.swing.JInternalFrame {
         modelo.addColumn("Fecha de Nacimiento");
         modelo.addColumn("Estado");
         jTAlumno.setModel(modelo);
+    }
+    
+    private void cargarDatosTabla(){
+        ArrayList <Alumno> alumno = new ArrayList();
+        alumno = alumnoData.listarAlumno();
+        for(Alumno a : alumno){
+            if(a.isEstado()==true){
+                modelo.addRow(new Object[]{a.getIdAlumno(), a.getNombre(), a.getApellido(), a.getDni(), a.getFechaNacimiento(), "Activo"});
+            }else{
+                modelo.addRow(new Object[]{a.getIdAlumno(), a.getNombre(), a.getApellido(), a.getDni(), a.getFechaNacimiento(), "Inactivo"});
+            }
+            
+        }
     }
     
     private void limpiarCampos(){

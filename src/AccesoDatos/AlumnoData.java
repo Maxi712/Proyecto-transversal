@@ -58,9 +58,13 @@ public class AlumnoData {
             ps.setString(3, alumno.getNombre());
             ps.setDate(4, Date.valueOf(alumno.getFechaNacimiento()));
             ps.setBoolean(5, alumno.isEstado());
+            System.out.println(alumno.getIdAlumno());
+            ps.setInt(6, alumno.getIdAlumno());
             int exito = ps.executeUpdate();
             if(exito == 1){
                 JOptionPane.showMessageDialog(null, "Alumno modificado ...");
+            }else{
+                JOptionPane.showMessageDialog(null, "Alumno no existe...");
             }
         }catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno ..."+ex.getMessage());
@@ -99,7 +103,7 @@ public class AlumnoData {
     
     public ArrayList<Alumno> listarAlumno(){
         ArrayList <Alumno> listaA = new ArrayList();
-        String sql = "SELECT * FROM alumno WHERE estado=1";
+        String sql = "SELECT * FROM alumno ";
         try{
             PreparedStatement ps = conexion.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();

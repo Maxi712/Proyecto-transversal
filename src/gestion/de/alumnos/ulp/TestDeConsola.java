@@ -1,5 +1,5 @@
 
-package Vista;
+package gestion.de.alumnos.ulp;
 
 import AccesoDatos.AlumnoData;
 import gestion.de.alumnos.ulp.Alumno;

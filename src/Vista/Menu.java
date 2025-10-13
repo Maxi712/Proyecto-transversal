@@ -6,6 +6,7 @@
 package Vista;
 
 
+import ClasesAuxiliares.EscritorioPersonalizado;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.security.Principal;
