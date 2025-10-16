@@ -39,8 +39,9 @@ public class InscripcionData {
                 inscripcion.getIdMateria().setIdMateria(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "Alumno inscripto exitosamente ...");
             }
+            ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia ..." + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripción ..." + ex.getMessage());
         }
     }
 
@@ -51,11 +52,29 @@ public class InscripcionData {
             ps.setInt(1, idMateria);
             ps.setInt(2, idAlumno);
             int exito = ps.executeUpdate();
-            if(exito == 1){
+            if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "Inscripcion eliminada ...");
             }
+            ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia ..." + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripción ..." + ex.getMessage());
+        }
+    }
+
+    public void ponerNota(float nota, int idMateria, int idAlumno) {
+        String sql = "UPDATE inscripcion SET nota = ? WHERE idMateria= ? AND idAlumno= ? ";
+        try {
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ps.setDouble(1, nota);
+            ps.setInt(2, idMateria);
+            ps.setInt(3, idAlumno);
+            int exito = ps.executeUpdate();
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "Nota actualizada ...");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripción ..." + ex.getMessage());
         }
     }
 }
