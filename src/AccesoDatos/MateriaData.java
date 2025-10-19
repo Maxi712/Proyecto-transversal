@@ -51,6 +51,7 @@ public class MateriaData {
             ps.setString(1, materia.getNombre());
             ps.setInt(2, materia.getAño());
             ps.setBoolean(3, materia.isEstado());
+            ps.setInt(4, materia.getIdMateria());
             int exito = ps.executeUpdate();
             if(exito == 1){
                 JOptionPane.showMessageDialog(null, "Materia modificado ...");
@@ -92,7 +93,7 @@ public class MateriaData {
     
     public ArrayList<Materia> listarMateria(){
         ArrayList <Materia> listaM = new ArrayList();
-        String sql = "SELECT * FROM materia WHERE estado=1";
+        String sql = "SELECT * FROM materia ";
         try{
             PreparedStatement ps = conexion.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();

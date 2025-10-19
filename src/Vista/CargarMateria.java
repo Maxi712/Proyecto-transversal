@@ -5,6 +5,13 @@
  */
 package Vista;
 
+import AccesoDatos.MateriaData;
+import gestion.de.alumnos.ulp.Alumno;
+import gestion.de.alumnos.ulp.Materia;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -17,6 +24,7 @@ import javax.swing.table.DefaultTableModel;
 public class CargarMateria extends javax.swing.JInternalFrame {
 
     private DefaultTableModel modelo = new DefaultTableModel();
+    private MateriaData materiaData = new MateriaData();
 
     /**
      * Creates new form CargarMateria1
@@ -24,6 +32,7 @@ public class CargarMateria extends javax.swing.JInternalFrame {
     public CargarMateria() {
         initComponents();
         armarCabecera();
+        cargarDatosTabla();
     }
 
     /**
@@ -96,6 +105,11 @@ public class CargarMateria extends javax.swing.JInternalFrame {
         });
 
         jBBuscar.setText("Buscar");
+        jBBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBBuscarActionPerformed(evt);
+            }
+        });
 
         jLNombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLNombre.setText("Nombre:");
@@ -122,12 +136,27 @@ public class CargarMateria extends javax.swing.JInternalFrame {
 
         jBAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1.png"))); // NOI18N
         jBAgregar.setToolTipText("Agregar Materia");
+        jBAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAgregarActionPerformed(evt);
+            }
+        });
 
         jBActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/3.png"))); // NOI18N
         jBActualizar.setToolTipText("Modificar Materia");
+        jBActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBActualizarActionPerformed(evt);
+            }
+        });
 
         jBEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/2.png"))); // NOI18N
         jBEliminar.setToolTipText("Eliminar Materia");
+        jBEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEliminarActionPerformed(evt);
+            }
+        });
 
         jTMateria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -291,6 +320,72 @@ public class CargarMateria extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jTFAñoKeyReleased
 
+    private void jBAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAgregarActionPerformed
+        // TODO add your handling code here:
+        try {
+            if (!this.jTFNombre.getText().isEmpty() && !this.jTFAño.getText().isEmpty()) {
+                String nombre = this.jTFNombre.getText();
+                int año = Integer.parseInt(jTFAño.getText());
+                boolean estado = this.jRBEstado.isSelected();
+                Materia m = new Materia(nombre, año, estado);
+                materiaData.guardarMateria(m);
+            }
+            limpiarCampos();
+            modelo.setRowCount(0);
+            cargarDatosTabla();
+        } catch (NumberFormatException ex) {
+            System.out.println(ex.getLocalizedMessage());
+            JOptionPane.showMessageDialog(null, "Numero no valido" + ex.getMessage());
+        }
+    }//GEN-LAST:event_jBAgregarActionPerformed
+
+    private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
+        // TODO add your handling code here:
+        ArrayList<Materia> materia = new ArrayList();
+        materia = materiaData.listarMateria();
+        for (Materia m : materia) {
+            if (m.getIdMateria() == Integer.parseInt(jTFCodigo.getText())) {
+                jTFNombre.setText(m.getNombre());
+                this.jTFAño.setText(Integer.toString(m.getAño()));
+                jRBEstado.setSelected(m.isEstado());
+            }
+        }
+    }//GEN-LAST:event_jBBuscarActionPerformed
+
+    private void jBActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBActualizarActionPerformed
+        // TODO add your handling code here:
+        try{
+            if(!this.jTFNombre.getText().isEmpty() && !this.jTFAño.getText().isEmpty()){
+                int idMateria = Integer.parseInt(this.jTFCodigo.getText());
+                String nombre = this.jTFNombre.getText();
+                int año = Integer.parseInt(jTFAño.getText());
+                boolean estado = this.jRBEstado.isSelected();
+                Materia m = new Materia(idMateria,nombre, año, estado);
+                materiaData.modificarMateria(m);
+            }
+            limpiarCampos();
+            modelo.setRowCount(0);
+            cargarDatosTabla();
+        }catch(NumberFormatException ex){
+            System.out.println(ex.getLocalizedMessage());
+            JOptionPane.showMessageDialog(null, "Numero no valido" +ex.getMessage());
+        }
+    }//GEN-LAST:event_jBActualizarActionPerformed
+
+    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
+        // TODO add your handling code here:
+        try{
+            int idMateria = Integer.parseInt(this.jTFCodigo.getText());
+            materiaData.eliminarMateria(idMateria);
+            limpiarCampos();
+            modelo.setRowCount(0);
+            cargarDatosTabla();
+        }catch(NumberFormatException ex){
+            System.out.println(ex.getLocalizedMessage());
+            JOptionPane.showMessageDialog(null, "Numero no valido" +ex.getMessage());
+        }
+    }//GEN-LAST:event_jBEliminarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBActualizar;
@@ -321,8 +416,21 @@ public class CargarMateria extends javax.swing.JInternalFrame {
         modelo.addColumn("Estado");
         jTMateria.setModel(modelo);
     }
-    
-    private void limpiarCampos(){
+
+    private void cargarDatosTabla() {
+        ArrayList<Materia> materia = new ArrayList();
+        materia = materiaData.listarMateria();
+        for (Materia m : materia) {
+            if (m.isEstado() == true) {
+                modelo.addRow(new Object[]{m.getIdMateria(), m.getNombre(), m.getAño(), "Activo"});
+            } else {
+                modelo.addRow(new Object[]{m.getIdMateria(), m.getNombre(), m.getAño(), "Inactivo"});
+            }
+
+        }
+    }
+
+    private void limpiarCampos() {
         jTFCodigo.setText("");
         jTFNombre.setText("");
         jTFAño.setText("");
