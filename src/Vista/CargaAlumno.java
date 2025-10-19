@@ -408,6 +408,7 @@ public class CargaAlumno extends javax.swing.JInternalFrame {
                 boolean estado = jRBEstado.isSelected();
                 Alumno a = new Alumno(idAlumno,documento, apellido, nombre, nacimiento, estado);
                 alumnoData.modificarAlumno(a);
+                System.out.println(a.getIdAlumno());
             }
             limpiarCampos();
             modelo.setRowCount(0);

@@ -25,14 +25,6 @@ public class Inscripcion {
         this.materia = materia;
     }
 
-    public Inscripcion(float nota, Alumno alumno, Materia materia) {
-        this.nota = nota;
-        this.alumno = alumno;
-        this.materia = materia;
-    }
-
-    
-    
     public int getIdInscripto() {
         return idInscripto;
     }

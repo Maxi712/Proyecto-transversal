@@ -310,10 +310,7 @@ public class InscripcionMateria extends javax.swing.JInternalFrame {
         ArrayList<Materia> materia = new ArrayList();
         materia = materiaData.listarMateria();
         for(Materia m : materia){
-            if(m.isEstado()){
-                 jCBMateria.addItem(m.toString());
-            }
-           
+            jCBMateria.addItem(m.toString());
         }
     }
     
@@ -321,9 +318,7 @@ public class InscripcionMateria extends javax.swing.JInternalFrame {
         ArrayList<Alumno> alumno = new ArrayList();
         alumno = alumnoData.listarAlumno();
         for(Alumno a : alumno){
-            if(a.isEstado()){
-                jCBAlumno.addItem(a.toString());
-            } 
+            jCBAlumno.addItem(a.toString());
         }
     }
 }

@@ -36,7 +36,7 @@ public class InscripcionData {
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
-                inscripcion.getIdMateria().setIdMateria(rs.getInt(1));
+                inscripcion.setIdMateria(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "Alumno inscripto exitosamente ...");
             }
             ps.close();
